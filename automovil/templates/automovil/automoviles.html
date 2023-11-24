@@ -1,15 +1,15 @@
 {% extends "base.html" %}
 
 {% block title_head %}
-    Paleta!
+    Automovil
 {% endblock title_head %}
 
 {% block h1_principal %}
-    Se creo la paleta{{paleta.marca}}
+   Automovil
 {% endblock h1_principal %}
 
 {% block header_desc %}
-    Ponele que esta es una pagina secundaria
+    Header descripción para el auto
 {% endblock header_desc %}
 
 {% block main %} 
@@ -20,17 +20,17 @@
             <input type="submit" value="Buscar">
         </form>
     </p>
-    {% if listado_paletas %}
+    {% if listado_autos %}
         <p class="container">
             <ul>
-                {% for paletas in listado_paletas %}
+                {% for autos in listado_autos %}
                 <li>
-                    {{paletas}} | <a href={% url "actualizarPaleta" paletas.id %}   >Actualizar</a> |<a href={% url "eliminarPaleta" paletas.id %}>Eliminar </a> | <a href= {% url "detallePaleta" paletas.id %}>Ver más...</a>
+                    {% comment %} {{paletas}} | <a href={% url "actualizarPaleta" paletas.id %}   >Actualizar</a> |<a href={% url "eliminarPaleta" paletas.id %}>Eliminar </a> | <a href= {% url "detallePaleta" paletas.id %}>Ver más...</a> {% endcomment %}
                 </li>
                 {% endfor %}
             </ul>
         </p>
     {% else %}
-        <p>No se encontraron productos..</p>
+        <p>No se encontraron Automoviles..</p>
     {% endif %}
 {% endblock main %}

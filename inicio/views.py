@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from inicio.models import Paleta
-from inicio.forms import CrearPaletaFormulario, BuscarPaletaFormulario
+from inicio.forms import CrearPaletaFormulario, BuscarPaletaFormulario, ActualizarPaletaFormulario
 # from django.http import HttpResponse
 # from django.template import loader
 
@@ -58,3 +58,30 @@ def crear_paleta(request):
     formulario = CrearPaletaFormulario()
     return render(request,'inicio/crear_paleta.html',{'formulario':formulario})
         
+def eliminarPaleta(request, paleta_id):
+    paletaAeliminar = Paleta.objects.get(id=paleta_id)
+    paletaAeliminar.delete()
+    return redirect("paleta")
+
+def actualizarPaleta(request, paleta_id):  
+    paletaAactualizar = Paleta.objects.get(id=paleta_id)
+
+    if request.method == 'POST':
+        formulario = ActualizarPaletaFormulario(request.POST)
+        if formulario.is_valid():
+            info_nueva =formulario.cleaned_data
+
+            paletaAactualizar.marca = info_nueva.get('marca')
+            paletaAactualizar.formato = info_nueva.get('formato')
+            paletaAactualizar.anio = info_nueva.get('anio')
+            paletaAactualizar.save()
+            return redirect("paleta")
+        else:
+            return render(request,'inicio/actualizarPaleta.html',{'formulario':formulario})        
+    
+    formulario =ActualizarPaletaFormulario(initial={'marca':paletaAactualizar.marca,'formato':paletaAactualizar.formato,'anio':paletaAactualizar.anio})
+    return render(request,'inicio/actualizarPaleta.html',{'formulario':formulario})
+
+def detallePaleta(request, paleta_id):
+    paleta = Paleta.objects.get(id=paleta_id)
+    return render(request,'inicio/detallePaleta.html',{'paleta':paleta})

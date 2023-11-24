@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title_head %}
+    Detalle Paleta!
+{% endblock title_head %}
+
+{% block h1_principal %}
+    Detalles de la paletonga {{paleta.marca}} - {{paleta.formato}}
+{% endblock h1_principal %}
+
+{% block header_desc %}
+    aca ba lo que se te venga en gana o el detalle de la paleta
+{% endblock header_desc %}
+
+{% block main %}
+
+    <p class="container">
+        <ul>
+            <li>Marca: {{paleta.marca}}</li>
+            <li>Desc : {{paleta.formato}}</li>
+            <li>Año  : {{paleta.anio}}</li>
+        </ul>
+    </p>
+
+{% endblock main %}
+
