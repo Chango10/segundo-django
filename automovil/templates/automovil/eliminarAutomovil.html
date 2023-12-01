@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title_head %}
+    Actualizar Paleta!
+{% endblock title_head %}
+
+{% block h1_principal %}
+    Actualizar paletonga
+{% endblock h1_principal %}
+
+{% block header_desc %}
+    Ojito ojete que se esta actualizando la paleta
+{% endblock header_desc %}
+
+{% block main %}
+
+    <form action="" method='POST'>
+        {% csrf_token %}        
+        Desea eliminar el automovil {{auto}}?
+        <input type="submit" value="Confirmar">
+    </form>
+{% endblock main %}
+

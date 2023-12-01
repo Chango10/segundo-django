@@ -13,19 +13,25 @@
 {% endblock header_desc %}
 
 {% block main %} 
-    <p>
+    {% comment %} <p>
         <form action="">
-            {% comment %} <input type="text" name="marca" placeholder="Marca a buscar"> {% endcomment %}
+            <input type="text" name="marca" placeholder="Marca a buscar"> //si descomento el resto, tengo que cometar esta linea
             {{formulario}}
             <input type="submit" value="Buscar">
         </form>
+    </p> {% endcomment %}
+    <p>
+        <a href={% url "crear_Automovil" %}>Crear Auto</a>
     </p>
-    {% if listado_autos %}
+    {% if listado_de_automoviles %}
         <p class="container">
             <ul>
-                {% for autos in listado_autos %}
-                <li>
-                    {% comment %} {{paletas}} | <a href={% url "actualizarPaleta" paletas.id %}   >Actualizar</a> |<a href={% url "eliminarPaleta" paletas.id %}>Eliminar </a> | <a href= {% url "detallePaleta" paletas.id %}>Ver más...</a> {% endcomment %}
+                {% for autos in listado_de_automoviles %}
+                <li>  
+                    {% comment %} {{autos}} {% endcomment %}
+                      <a href= {% url "detalle_Automovil" autos.id %}>{{autos}}</a> 
+                    | <a href={% url "actualizar_Automovil" autos.id %}>Actualizar</a> 
+                    | <a href={% url "eliminar_Automovil" autos.id %}>Eliminar </a>
                 </li>
                 {% endfor %}
             </ul>

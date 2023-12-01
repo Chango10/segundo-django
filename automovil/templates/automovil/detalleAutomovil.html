@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title_head %}
+    Detalle Auto!
+{% endblock title_head %}
+
+{% block h1_principal %}
+    Detalles del movil {{auto.marca}} - {{auto.modelo}}
+{% endblock h1_principal %}
+
+{% block header_desc %}
+    aca ba lo que se te venga en gana o el detalle del automovicl
+{% endblock header_desc %}
+
+{% block main %}
+
+    <p class="container">
+        <ul>
+            <li>Marca  : {{auto.marca}}</li>
+            <li>Modelo : {{auto.modelo}}</li>
+            <li>Desc   : {{auto.descripcion}}</li>
+            <li>Año    : {{auto.anio}}</li>
+        </ul>
+    </p>
+
+{% endblock main %}
+

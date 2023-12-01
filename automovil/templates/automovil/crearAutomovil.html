@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title_head %}
+    Creando Auto!
+{% endblock title_head %}
+
+{% block h1_principal %}
+    Crear Automovil
+{% endblock h1_principal %}
+
+{% block header_desc %}
+    Estamos el puto auto
+{% endblock header_desc %}
+
+{% block main %}
+    {% comment %} si a action lo dejo sin nada, envia el formulario a la misma pag,
+    si le pongo /paleta enviar el formilario a la pagina paleta {% endcomment %}
+    <form action="" method='POST'>
+        {% csrf_token %}        
+        {% comment %} <p>Marca: <input type="text" name="marca"></p>
+        <p>Desc : <input type="text" name="formato"></p>
+        <p>Año  : <input type="number" name="anio"></p> {% endcomment %}
+        {{form}}
+        <input type="submit" value="Crear">
+        {% comment %} <button>Crear</button> {% endcomment %}
+    </form>
+{% endblock main %}
+
