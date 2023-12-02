@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from inicio.models import Paleta
 from inicio.forms import CrearPaletaFormulario, BuscarPaletaFormulario, ActualizarPaletaFormulario
+from django.contrib.auth.decorators import login_required
 # from django.http import HttpResponse
 # from django.template import loader
 
@@ -57,12 +58,14 @@ def crear_paleta(request):
     # formulario vacio GET, cuando es la primera vez que entra a la pag
     formulario = CrearPaletaFormulario()
     return render(request,'inicio/crear_paleta.html',{'formulario':formulario})
-        
+
+@login_required  
 def eliminarPaleta(request, paleta_id):
     paletaAeliminar = Paleta.objects.get(id=paleta_id)
     paletaAeliminar.delete()
     return redirect("paleta")
 
+@login_required
 def actualizarPaleta(request, paleta_id):  
     paletaAactualizar = Paleta.objects.get(id=paleta_id)
 
