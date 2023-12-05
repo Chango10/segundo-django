@@ -1,8 +1,9 @@
 from django import forms
+from ckeditor.fields import RichTextFormField
 
 class BasePaletaFormulario(forms.Form):
     marca = forms.CharField(max_length=20)
-    formato = forms.CharField(max_length=250)
+    formato = RichTextFormField()
     anio = forms.IntegerField()
 
 class CrearPaletaFormulario(BasePaletaFormulario):

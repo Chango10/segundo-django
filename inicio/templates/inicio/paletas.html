@@ -25,7 +25,7 @@
             <ul>
                 {% for paletas in listado_paletas %}
                 <li>
-                    {{paletas}} | <a href={% url "actualizarPaleta" paletas.id %}   >Actualizar</a> |<a href={% url "eliminarPaleta" paletas.id %}>Eliminar </a> | <a href= {% url "detallePaleta" paletas.id %}>Ver más...</a>
+                    {{paletas | safe}} | <a href={% url "actualizarPaleta" paletas.id %}   >Actualizar</a> |<a href={% url "eliminarPaleta" paletas.id %}>Eliminar </a> | <a href= {% url "detallePaleta" paletas.id %}>Ver más...</a>
                 </li>
                 {% endfor %}
             </ul>

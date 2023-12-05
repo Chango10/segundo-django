@@ -1,3 +1,5 @@
+from typing import Any
+from django.db.models.query import QuerySet
 from django.shortcuts import render
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from automovil.models import Auto
@@ -8,6 +10,15 @@ class ListadoAutomoviles(ListView):
     model = Auto 
     context_object_name = 'listado_de_automoviles'
     template_name ='automovil/automoviles.html'
+
+    def get_queryset(self):
+        marca = self.request.GET.get('marca','')
+        if marca:
+            listado_de_automoviles = self.model.objects.filter(marca__icontains=marca)
+        else:
+            listado_de_automoviles = self.model.objects.all()
+        return listado_de_automoviles
+            
 
 class CrearAutomovil(LoginRequiredMixin,CreateView):
     model = Auto

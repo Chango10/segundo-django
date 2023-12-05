@@ -54,7 +54,12 @@
                                 Cart
                                 <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                             </button>
-                            <a class="navbar-brand" href='#'>{{request.user.username}}</a>
+                            <a class="navbar-brand" href={% url "editar_usuario" %}>
+                                {% if request.user.datosextras.avatar %}
+                                    <img src={{request.user.datosextras.avatar.url}} alt="avatar" height = '40px'>
+                                {% endif %}
+                                {{request.user.first_name}}
+                            </a>
                             <a class="btn btn-primary" href={% url "logout" %}>LogOut</a>
                         {% endif %}
                     {% comment %} </form> {% endcomment %}

@@ -1,8 +1,9 @@
 from django.db import models
+from ckeditor.fields import RichTextField
 
 class Paleta(models.Model):
     marca = models.CharField(max_length=50)
-    formato = models.TextField()
+    formato = RichTextField()
     anio = models.IntegerField()
 
 # este def se ve en el catalogo de tablas del panel de administracion /admin

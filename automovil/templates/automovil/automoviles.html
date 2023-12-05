@@ -13,30 +13,29 @@
 {% endblock header_desc %}
 
 {% block main %} 
-    {% comment %} <p>
+    <p>
         <form action="">
-            <input type="text" name="marca" placeholder="Marca a buscar"> //si descomento el resto, tengo que cometar esta linea
-            {{formulario}}
+            <input type="text" name="marca" placeholder="Marca a buscar"> 
             <input type="submit" value="Buscar">
         </form>
-    </p> {% endcomment %}
+    </p> 
+    {% if listado_de_automoviles %}
+    <p class="container">
+        <ul>
+            {% for autos in listado_de_automoviles %}
+            <li>  
+                {% comment %} {{autos}} {% endcomment %}
+                <a href= {% url "detalle_Automovil" autos.id %}>{{autos}}</a> 
+                | <a href={% url "actualizar_Automovil" autos.id %}>Actualizar</a> 
+                | <a href={% url "eliminar_Automovil" autos.id %}>Eliminar </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </p>
+    {% else %}
+    <p>No se encontraron Automoviles..</p>
+    {% endif %}
     <p>
         <a href={% url "crear_Automovil" %}>Crear Auto</a>
     </p>
-    {% if listado_de_automoviles %}
-        <p class="container">
-            <ul>
-                {% for autos in listado_de_automoviles %}
-                <li>  
-                    {% comment %} {{autos}} {% endcomment %}
-                      <a href= {% url "detalle_Automovil" autos.id %}>{{autos}}</a> 
-                    | <a href={% url "actualizar_Automovil" autos.id %}>Actualizar</a> 
-                    | <a href={% url "eliminar_Automovil" autos.id %}>Eliminar </a>
-                </li>
-                {% endfor %}
-            </ul>
-        </p>
-    {% else %}
-        <p>No se encontraron Automoviles..</p>
-    {% endif %}
 {% endblock main %}
